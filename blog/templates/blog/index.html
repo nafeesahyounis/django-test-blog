@@ -18,7 +18,12 @@
     </div>
     <div class="row">
         <div class="col-12">
+            <a href="{% url 'home' %}?category=travel">travel</a>
+            <a href="{% url 'home' %}?category=beauty">beauty</a>
+            <a href="{% url 'home' %}?category=food">food</a>
 
+
+<!--
             <div class="col-2">
                                          {% for category in categories %}
 
@@ -27,9 +32,11 @@
 
             </div>
 
+-->
 
         </div>
     </div>
+    
     <div class="row">
         <div class="col-12 card">
                         <div class="card-body">
