@@ -1,7 +1,16 @@
 from django.shortcuts import render
+from .models import Post
 
 # Create your views here.
 
 def home(request):
     """A view to return the home page"""
-    return render(request, 'blog/index.html')
+
+    posts = Post.objects.all()
+
+    context = {
+        'posts': posts,
+        }
+    return render(request, 'blog/index.html', context)
+
+    
