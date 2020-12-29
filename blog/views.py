@@ -11,8 +11,9 @@ def home(request):
 
     posts = Post.objects.all()
     categories = None
-    paginator = Paginator(posts,3)
-    page = paginator.get_page(1)
+    paginator = Paginator(posts, 3)
+    page_num = request.GET.get('page')
+    page = paginator.get_page(page_num)
 
     if request.GET:
         if 'category' in request.GET:

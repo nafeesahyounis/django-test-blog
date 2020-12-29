@@ -14,6 +14,7 @@
     <div class="row">
         <div class="col-12">
         <h2>Blog</h2>
+        <h3>Page Number: {{page.number}}</h3>
         </div>
     </div>
     <div class="row">
@@ -43,7 +44,7 @@
 
     
              {% for post in page.object_list %}
-                <a href="{% url 'post_detail' post.slug%}"> {{ post.title }}</a>
+                <a href="{% url 'post_detail' post.slug %}"> {{ post.title }}</a>
 
                 <p>{{ post.category }}</p> 
                 <p>{{ post.tags }}</p>        
@@ -53,6 +54,14 @@
                {% endfor %}
             </div>
             </div>
+            </div>
+            <div>
+                {% if page.has_previous %}
+                <a href="{% url 'home' %}?page={{ page.previous_page_number }}"> Previous Page</a>
+                {% endif %}
+                {% if page.has_next %}
+                <a href="{% url 'home' %}?page={{ page.next_page_number }}"> Next Page</a>
+                {% endif %}
             </div>
             </div>
 
