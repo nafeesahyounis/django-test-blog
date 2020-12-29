@@ -42,7 +42,7 @@
                         <div class="card-body">
 
     
-             {% for post in posts %}
+             {% for post in page.object_list %}
                 <a href="{% url 'post_detail' post.slug%}"> {{ post.title }}</a>
 
                 <p>{{ post.category }}</p> 

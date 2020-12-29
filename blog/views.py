@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Post, Category
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -10,6 +11,8 @@ def home(request):
 
     posts = Post.objects.all()
     categories = None
+    paginator = Paginator(posts,3)
+    page = paginator.get_page(1)
 
     if request.GET:
         if 'category' in request.GET:
@@ -19,9 +22,12 @@ def home(request):
 
     context = {
         'posts': posts,
-        'current_categories': categories
+        'current_categories': categories,
+        'page': page,
+        'count': paginator.count
         }
     return render(request, 'blog/index.html', context)
+
 
 @ login_required
 def post_detail(request, slug):
@@ -34,5 +40,3 @@ def post_detail(request, slug):
     }
 
     return render(request, 'blog/post_detail.html', context)
-
-    
