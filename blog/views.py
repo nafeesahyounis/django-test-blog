@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Post, Category
 
 # Create your views here.
@@ -22,7 +23,7 @@ def home(request):
         }
     return render(request, 'blog/index.html', context)
 
-
+@ login_required
 def post_detail(request, slug):
     """ A view to show individual post details """
 
