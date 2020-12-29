@@ -43,8 +43,8 @@
 
     
              {% for post in posts %}
+                <a href="{% url 'post_detail' post.slug%}"> {{ post.title }}</a>
 
-                <p>{{ post.title }}</p>
                 <p>{{ post.category }}</p> 
                 <p>{{ post.tags }}</p>        
                 <p>{{ post.author }}</p>        
