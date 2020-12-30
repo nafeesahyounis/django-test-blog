@@ -11,10 +11,11 @@ def home(request):
 
     posts = Post.objects.all()
     categories = None
+    # pagination using paginator class, set to three posts per page
     paginator = Paginator(posts, 3)
     page_num = request.GET.get('page')
     page = paginator.get_page(page_num)
-
+    # filter for categories
     if request.GET:
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
@@ -32,7 +33,7 @@ def home(request):
 
 @ login_required
 def post_detail(request, slug):
-    """ A view to show individual post details """
+    """ A view to show individual post details using slug """
 
     posts = Post.objects.get(slug=slug)
 
