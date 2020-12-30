@@ -20,4 +20,3 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('<slug>', views.post_detail, name='post_detail'),
 ]
-
